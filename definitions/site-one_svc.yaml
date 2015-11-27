@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: site-one
+  labels:
+    name: site-one
+spec:
+  sessionAffinity: ClientIP
+  ports:
+  - name: site-one-http
+    port: 80
+    targetPort: site-one-http
+    protocol: TCP
+  selector:
+    name: site-one

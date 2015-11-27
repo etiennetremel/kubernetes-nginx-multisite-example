@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: proxy
+spec:
+  replicas: 2
+  selector:
+    name: proxy
+  template:
+    metadata:
+      labels:
+        name: proxy
+    spec:
+      containers:
+      - name: proxy
+        image: proxy-container
+        ports:
+        - containerPort: 80
+          name: proxy-http
+        - containerPort: 443
+          name: proxy-https
